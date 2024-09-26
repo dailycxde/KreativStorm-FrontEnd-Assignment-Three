@@ -3,23 +3,26 @@ function generateRandomNumber() {
 };
 
 const getPlayerGuess = function(){
-    let x = prompt("enter a number: ");
-    x = Number(x);
-
-    if(Number.isInteger(x)){
-        return x;
-    } else{
-        console.log("invalid input\n");
-        return getPlayerGuess();
+    while (true) {
+        let x = prompt("Enter a number between 1 and 100: ");
+        if (x === null) {
+        throw new Error("Player has cancelled");
+        }
+        x = Number(x);
+        if (Number.isInteger(x) && x >= 1 && x <= 100) {
+            return x;
+        } else {
+            alert("Invalid input. Please enter a number between 1 and 100.");
+        }
     }
-};
+}
 
-const checkGuess = (pg, ca) => {
+const checkGuess = function(pg, ca) {
     if(pg>ca){
-        console.log("too high\n");
+        console.log("Too high.\n");
         return false;
     } else if(pg<ca){
-        console.log("too low\n");
+        console.log("Too low\n");
         return false;
     } else{
         return true;
@@ -57,7 +60,7 @@ function game(){
         return game();
     }
 
-    console.log("exiting...\n");
+    console.log("Exiting...\n");
     return;
 }
 
