@@ -1,18 +1,18 @@
 function generateRandomNumber() {
-    return Math.floor((Math.random() * 100))
-}
+    return Math.floor((Math.random() * 100));
+};
 
 const getPlayerGuess = function(){
-    let x = prompt("Guess a number between 1 and 100.\n")
-    x = Number(x)
-    
+    let x = prompt("enter a number: ");
+    x = Number(x);
+
     if(Number.isInteger(x)){
         return x;
-    } else {
+    } else{
         console.log("invalid input\n");
         return getPlayerGuess();
     }
-}
+};
 
 const checkGuess = (pg, ca) => {
     if(pg>ca){
@@ -24,40 +24,41 @@ const checkGuess = (pg, ca) => {
     } else{
         return true;
     }
-}
+};
 
 function game(){
-    
+
     let number = generateRandomNumber();
     let guesses = [];
     let state = false;
-    
-    
+
+
     for(let i=0;i<10;i++){
         let guess = getPlayerGuess();
         guesses.push(guess);
         console.log("guesses: ", guesses);
-        
+
         if(checkGuess(guess,number)){
             state = true;
-            break
+            break;
         }
     }
-    
+
     if(state){
         console.log("YOU WIN!\n");
-        console.log("Number of Attempts: ${guesses.length}\n");
+        console.log(`Number of Attempts: ${guesses.length}\n`);
     } else{
         console.log("YOU LOSE!\n");
+        console.log(`The number was: ${number}\n`);
     }
-    
+
     let cntn = prompt("Would you like to play again? (Y/N): ");
     if(cntn.toUpperCase()=="Y"){
         return game();
     }
-    
-    console.log("exiting...\n")
-    return
+
+    console.log("exiting...\n");
+    return;
 }
 
 game();
