@@ -9,7 +9,7 @@ const playerPlay = function() {
     while (true) {
         x = prompt("Choose either 'Rock', 'Paper' or 'Scissors': ");
         try {
-            x = x.toLowerCase();
+            x = x.toLowerCase().trim();
         } catch(err) {
             throw new Error("Player has cancelled.");
         }
@@ -69,4 +69,7 @@ function game() {
     }
 }
 
-game();
+
+if(window.confirm("Welcome :)\nWould you like to start the game?")){
+    game();
+};
