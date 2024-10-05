@@ -56,7 +56,7 @@ function game(){
     }
 
     let cntn = prompt("Would you like to play again? (Y/N): ");
-    if(cntn.toUpperCase()=="Y"){
+    if(cntn.toUpperCase().trim()=="Y"){
         return game();
     }
 
